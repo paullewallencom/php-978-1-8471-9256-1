@@ -1,0 +1,17 @@
+<?
+$mysqli = new mysqli("localhost", "un" "pwd", "db");
+if (mysqli_connect_errno()) {
+echo("Failed to connect, the error message is : ".
+mysqli_connect_error());
+exit();
+}
+$stmt = $mysqli ->prepare("select name, pass from users
+order by name");
+$stmt->execute();
+//$name=null;
+$stmt->bind_result($name, $pass);
+while ($stmt->fetch())
+{
+echo $name."<br/>";
+}
+?>

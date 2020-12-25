@@ -1,0 +1,73 @@
+<?php
+interface NSerializable
+{
+// ...
+}
+class Object
+{
+// ...
+}
+/**
+* A counter class
+*/
+class Counter extends Object implements NSerializable
+{
+const START = 0;
+private static $c = Counter::START;
+/**
+* Invoke counter
+*
+* @access public
+* @return int
+*/
+public function count()
+{
+return self::$c++;
+}
+}
+// Create an instance of the ReflectionClass class
+$class = new ReflectionClass('Counter');
+// Print out basic information
+printf(
+"===> The %s%s%s %s '%s' [extends %s]\n" .
+" declared in %s\n" .
+" lines %d to %d\n" .
+" having the modifiers %d [%s]\n",
+$class->isInternal() ? 'internal' : 'user-defined',
+$class->isAbstract() ? ' abstract' : '',
+$class->isFinal() ? ' final' : '',
+$class->isInterface() ? 'interface' : 'class',
+$class->getName(),
+var_export($class->getParentClass(), 1),
+$class->getFileName(),
+$class->getStartLine(),
+$class->getEndline(),
+$class->getModifiers(),
+implode(' ', Reflection::getModifierNames(
+$class->getModifiers()))
+);
+// Print documentation comment
+printf("---> Documentation:\n %s\n",
+var_export($class->getDocComment(), 1));
+// Print which interfaces are implemented by this class
+printf("---> Implements:\n %s\n",
+var_export($class->getInterfaces(), 1));
+// Print class constants
+printf("---> Constants: %s\n",
+var_export($class->getConstants(), 1));
+// Print class properties
+printf("---> Properties: %s\n",
+var_export($class->getProperties(), 1));
+// Print class methods
+printf("---> Methods: %s\n",
+var_export($class->getMethods(), 1));
+// If this class is instantiable, create an instance
+if ($class->isInstantiable())
+{
+$counter = $class->newInstance();
+echo '---> $counter is instance? ';
+echo $class->isInstance($counter) ? 'yes' : 'no';
+echo "\n---> new Object() is instance? ";
+echo $class->isInstance(new Object()) ? 'yes' : 'no';
+}
+?>

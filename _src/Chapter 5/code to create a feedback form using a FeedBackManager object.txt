@@ -1,0 +1,22 @@
+class FeedBackManager
+<?
+{
+public function renderFeedbackForm()
+{
+$form = <<< END
+<form method=POST action="">
+Name: <br/>
+<input type='text' name='username'><br/>
+Email: <br/>
+<input type='text' name='email'><br/>
+Subject: <br/>
+<input type='text' name='subject'><br/>
+Message: <br/>
+<textarea name='message'></textarea><br/>
+<input type='submit' value='submit>
+</form>
+END;
+echo $form;
+}
+}
+?>

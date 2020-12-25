@@ -1,0 +1,14 @@
+<?
+$mysqli = new mysqli("localhost", "un" "pwd", "db");
+if (mysqli_connect_errno()) {
+echo("Failed to connect, the error message is : ".
+mysqli_connect_error());
+exit();
+}
+$stmt = $mysqli->prepare("insert into images value(NULL,?)");
+$stmt->bind_param("b",$image);
+$image = file_get_contents("signature.jpg");//fetching content of
+//a file
+$stmt->send_long_data(0,$image);
+$stmt->execute();
+?>

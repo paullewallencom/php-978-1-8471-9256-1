@@ -1,0 +1,18 @@
+<?php
+$dsn = 'sqlite::memory:';
+try {
+$pdo = new PDO($dsn);
+$pdo->exec("CREATE TABLE users (id int, name VARCHAR)");
+$pdo->exec("DELETE FROM users");
+$pdo->exec("INSERT INTO users (name) VALUES('afif')");
+$pdo->exec("INSERT INTO users (name) VALUES('tipu')");
+$pdo->exec("INSERT INTO users (name) VALUES('robin')");
+}
+catch (PDOException $e)
+{
+echo 'Connection failed: ' . $e->getMessage();
+}
+$result = $pdo->query("select * from users");
+foreach ($result as $row)
+echo $row['name'];
+?>

@@ -1,0 +1,20 @@
+<?
+$posts = getAllPosts(); //example function return all post ids of this
+author
+for($i = 0; $i<count($posts); $i++)
+{
+$title = getPostTitle($post[$i]);
+echo $title;
+$author = getPostAuthor($post[$i]);
+$content = parseBBCode(getPostContent($post[$i]));
+echo "Content";
+$comments = getAllComments($post[$i]);
+for ($j=0; $j<count($comments); $j++)
+{
+$commentAuthor = getCommentAuthor($comments[$j]);
+echo $commentAuthor;
+$comment = getCommentContent($comments[$j]);
+echo $comment;
+}
+}
+?>

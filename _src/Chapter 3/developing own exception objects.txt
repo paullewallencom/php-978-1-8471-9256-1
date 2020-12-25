@@ -1,0 +1,42 @@
+<?
+include_once("PGSQLConnectionException.class.php");
+include_once("PGSQLQueryException.class.php");
+error_reporting(0);
+class DAL
+{
+public $connection;
+public $result;
+public function connect($ConnectionString)
+{
+$this->connection = pg_connect($ConnectionString);
+if ($this->connection==false)
+{
+throw new PGSQLConnectionException($this->connection);
+}
+}
+public function execute($query)
+{
+$this->result = pg_query($this->connection,$query);
+if (!is_resource($this->result))
+{
+throw new PGSQLQueryException($this->connection);
+}
+//else do the necessary works
+}
+}
+$db = new DAL();
+try{
+$db->connect("dbname=golpo user=postgres2");
+try{
+$db->execute("select * from abc");
+}
+catch (Exception $queryexception)
+{
+echo $queryexception->getMessage();
+}
+}
+catch(Exception $connectionexception)
+{
+echo $connectionexception->getMessage();
+}
+?>

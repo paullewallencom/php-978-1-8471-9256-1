@@ -1,0 +1,126 @@
+<?
+class sqlitedriver extends abstractdbdriver
+{
+public function __construct($dbinfo)
+{
+if (isset($dbinfo['dbname']))
+{
+if (!$dbinfo['persistent'])
+$this->connection =
+sqlite_open($dbinfo['dbname'],0666,$errormessage);
+else
+$this->connection =
+sqlite_popen($dbinfo['dbname'],0666,$errormessage);
+if (!$this->connection)
+{
+throw new Exception($errormessage);
+}
+}
+else
+throw new Exception("You must supply database name for a
+successful connection");
+}
+public function count()
+{
+$lastresult = $this->results[$this->lasthash];
+//print_r($this->results);
+$count = sqlite_num_rows($lastresult);
+if (!$count) $count = 0;
+return $count;
+}
+public function execute($sql)
+{
+$sql = $this->prepQuery($sql);
+$parts = split(" ",trim($sql));
+$type = strtolower($parts[0]);
+$hash = md5($sql);
+$this->lasthash = $hash;
+if ("select"==$type)
+{
+if (isset($this->results[$hash]))
+{
+if (is_resource($this->results[$hash]))
+return $this->results[$hash];
+}
+}
+else if("update"==$type || "delete"==$type)
+{
+$this->results = array(); //clear the result cache
+}
+$this->results[$hash] = sqlite_query($sql,$this->connection);
+}
+private function prepQuery($sql)
+{
+return $sql;
+}
+public function escape($sql)
+{
+if (function_exists('sqlite_escape_string'))
+{
+return sqlite_escape_string($sql);
+}
+else
+{
+return addslashes($sql);
+}
+}
+public function affectedRows()
+{
+return sqlite_changes($this->connection);
+}
+public function insertId()
+{
+return @sqlite_last_insert_rowid($this->connection);
+}
+public function transBegin()
+{
+$this->execute('BEGIN TRANSACTION');
+}
+public function transCommit()
+{
+$this->execute('COMMIT');
+}
+public function transRollback()
+{
+$this->execute('COMMIT');
+}
+public function getRow($fetchmode = FETCH_ASSOC)
+{
+$lastresult = $this->results[$this->lasthash];
+if (FETCH_ASSOC == $fetchmode)
+$row = sqlite_fetch_array($lastresult,SQLITE_ASSOC);
+elseif (FETCH_ROW == $fetchmode)
+$row = sqlite_fetch_array($lastresult, SQLITE_NUM);
+elseif (FETCH_OBJECT == $fetchmode)
+$row = sqlite_fetch_object($lastresult);
+else
+$row = sqlite_fetch_array($lastresult,SQLITE_BOTH);
+return $row;
+}
+public function getRowAt($offset=null,$fetchmode = FETCH_ASSOC)
+{
+$lastresult = $this->results[$this->lasthash];
+if (!empty($offset))
+{
+sqlite_seek($lastresult, $offset);
+}
+return $this->getRow($fetchmode);
+}
+public function rewind()
+{
+$lastresult = $this->results[$this->lasthash];
+sqlite_rewind($lastresult);
+}
+public function getRows($start, $count, $fetchmode = FETCH_ASSOC)
+{
+$lastresult = $this->results[$this->lasthash];
+sqlite_seek($lastresult, $start);
+$rows = array();
+for ($i=$start; $i<=($start+$count); $i++)
+{
+$rows[] = $this->getRow($fetchmode);
+}
+return $rows;
+}
+}
+?>

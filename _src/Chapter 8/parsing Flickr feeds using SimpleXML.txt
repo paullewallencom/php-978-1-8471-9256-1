@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+xmlns:dc="http://purl.org/dc/elements/1.1/" >
+<title>Everyone's photos</title>
+<link rel="self"
+href="http://www.flickr.com/services/feeds/photos_public.gne" />
+<link rel="alternate" type="text/html"
+href="http://www.flickr.com/photos/"/>
+<id>tag:flickr.com,2005:/photos/public</id>
+<icon>http://www.flickr.com/images/buddyicon.jpg</icon>
+<subtitle></subtitle>
+<updated>2007-07-18T12:44:52Z</updated>
+<generator uri="http://www.flickr.com/">Flickr</generator>
+<entry>
+<title>A-lounge 9.07_6</title>
+<link rel="alternate" type="text/html"
+href="http://www.flickr.com/photos/dimitranova/845455130/"/>
+<id>tag:flickr.com,2005:/photo/845455130</id>
+<published>2007-07-18T12:44:52Z</published>
+<updated>2007-07-18T12:44:52Z</updated>
+<dc:date.Taken>2007-07-09T14:22:55-08:00</dc:date.Taken>
+<content type="html">&lt;p&gt;&lt;a
+href=&quot;http://www.flickr.com/people/dimitranova/&quot;
+&gt;Dimitranova&lt;/a&gt; posted a photo:&lt;/p&gt;
+&lt;p&gt;&lt;a
+href=&quot;http://www.flickr.com/photos/dimitranova/845455130/
+&quot; title=&quot;A-lounge 9.07_6&quot;&gt;&lt;img src=&quot;
+http://farm2.static.flickr.com/1285/845455130_dce61d101f_m.jpg
+&quot; width=&quot;180&quot; height=&quot;240&quot; alt=&quot;
+A-lounge 9.07_6&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+<author>
+<name>Dimitranova</name>
+<uri>http://www.flickr.com/people/dimitranova/</uri>
+</author>
+<link rel="license" type="text/html" href="deed.en-us" />
+<link rel="enclosure" type="image/jpeg"
+href="http://farm2.static.flickr.com/1285/
+845455130_7ef3a3415d_o.jpg" />
+</entry>
+<entry>
+<title>DSC00375</title>
+<link rel="alternate" type="text/html"
+href="http://www.flickr.com/photos/53395103@N00/845454986/"/>
+<id>tag:flickr.com,2005:/photo/845454986</id>
+<published>2007-07-18T12:44:50Z</published>
+...
+</entry>
+</feed>

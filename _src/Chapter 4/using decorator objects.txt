@@ -1,0 +1,27 @@
+<?
+$post = new Post();//set the properties of the post object
+$comment = new Comment();//set the properties of the comment object
+$post->filter();
+$comment->filter();
+if ($BBCodeEnabled==false && $EmoticonEnabled==false)
+{
+$PostContent = $post->getContent();
+$CommentContent = $comment->getContent();
+}
+elseif ($BBCodeEnabled==true && $EmoticonEnabled==false)
+{
+$bb = new BBCodeParser($post);//passing a post object to
+//BBCodeParser
+$PostContent = $bb->getContent();
+$bb = new BBCodeParser($comment);//passing a comment object to
+//BBCodeParser
+$CommentContent = $bb->getContent();
+}
+elseif ($BBCodeEnabled==true && $EmoticonEnabled==false)
+{
+$em = new EmoticonParser($post);
+$PostContent = $bb->getContent();
+$em = new EmoticonParser($comment);
+$CommentContent = $bb->getContent();
+}
+?>

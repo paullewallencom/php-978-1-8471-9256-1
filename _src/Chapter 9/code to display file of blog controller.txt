@@ -1,0 +1,11 @@
+<?
+foreach ($posts as $post)
+{
+echo "<div id='post{$post['id']}' >";
+echo "<b><a href='{$base_url}/blog/post/{$post['id']}'>
+{$post['title']}</a></b><br/>";
+echo "<p>".nl2br($post['content'])."</p>";
+echo "Number of comments: ".(count($post['comments']));
+echo "</div>";
+}
+?>

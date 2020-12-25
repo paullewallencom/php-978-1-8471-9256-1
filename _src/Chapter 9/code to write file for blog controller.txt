@@ -1,0 +1,9 @@
+<h1>Write a new blog post</h1>
+<font color="<?=$color;?>"><?=$message;?></font><br/>
+<form method="POST">
+Title:<br/>
+<input type="text" name="title"/><br/>
+Content: <br/>
+<textarea rows="5" cols="60" name="content" ></textarea><br/>
+<input type="submit" value="save" />
+</form>

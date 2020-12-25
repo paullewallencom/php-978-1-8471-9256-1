@@ -1,0 +1,28 @@
+<?
+$str = <<< EOT
+<roles>
+<task type="analysis">
+<state name="new">
+<assigned to="cto">
+<action newstate="clarify" assignedto="pm">
+<notify>pm</notify>
+<notify>cto</notify>
+</action>
+</assigned>
+</state>
+<state name="clarify">
+<assigned to="pm">
+<action newstate="clarified" assignedto="pm">
+<notify>cto</notify>
+</action>
+</assigned>
+</state>
+</task>
+</roles>
+EOT;
+$s = simplexml_load_string($str);
+$node = $s->xpath("//task[@type='analysis']/state[@name='new']
+/assigned[@to='cto']");
+echo $node[0]->action[0]['newstate']."\n";
+echo $node[0]->action[0]->notify[0];
+?>

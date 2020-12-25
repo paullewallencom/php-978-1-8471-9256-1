@@ -1,0 +1,34 @@
+<?php
+Class GoogleDocsAdapter implements DocManager
+{
+private $GD;
+public function __construct()
+{
+$this->GD = new GoogleDocs();
+}
+public function authenticate($user, $pwd)
+{
+$this->GD->setUser($user);
+$this->GD->setPwd($pwd);
+$this->GD->authenticateByClientLogin();
+}
+public function getDocuments($folderid)
+{
+return $this->GD->getAllDocuments();
+}
+public function getDocumentsByType($folderid, $type)
+{
+//get documents using GoogleDocs object and return only
+// which match the type
+}
+public function getFolders($folderid=null)
+{
+//for example there is no folder in GoogleDocs, so
+//return anything.
+}
+public function saveDocument($document)
+{
+//save the document using GoogleDocs object
+}
+}
+?>

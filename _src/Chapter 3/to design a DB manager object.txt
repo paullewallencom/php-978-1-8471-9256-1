@@ -1,0 +1,42 @@
+<?
+class DBManager
+{
+private $selectables = array();
+private $table;
+private $whereClause;
+private $limit;
+public function select()
+{
+$this->selectables=func_get_args();
+return $this;
+}
+public function from($table)
+{
+$this->table = $table;
+return $this;
+}
+public function where($clause)
+{
+$this->whereClause = $clause;
+return $this;
+}
+public function limit($limit)
+{
+$this->limit = $limit;
+return $this;
+}
+public function result()
+{
+$query = "SELECT ".join(",",$this->selectables)." FROM
+{$this->table}";
+if (!empty($this->whereClause))
+$query .= " WHERE {$this->whereClause}";
+if (!empty($this->limit))
+$query .= " LIMIT {$this->limit}";
+echo "The generated Query is : \n".$query;
+}
+}
+$db= new DBManager();
+$db->select("id","name")->from("users")->where("id=1")->
+limit(1)->result();
+?>

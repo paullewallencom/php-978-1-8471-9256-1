@@ -1,0 +1,9 @@
+<h1>Please login</h1>
+<font color="red"><?=$message;?></font><br/>
+<form method="POST">
+Username:<br/>
+<input type="text" name="name"/><br/>
+Password: <br/>
+<input type="password" name="password" /><br/>
+<input type="submit" name="Submit" value="Login" />
+</form>

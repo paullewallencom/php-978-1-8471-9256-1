@@ -1,0 +1,21 @@
+<?
+class BBCodeParser
+{
+private $post;
+public function __construct($object)
+{
+$this->post = $object;
+}
+public function getContent()
+{
+//parse bbcode
+$post->filter();
+$content = $this->parseBBCode($post->getContent());
+return $content;
+}
+private function parseBBCode($content)
+{
+//process BB code in the content and return it
+}
+}
+?>

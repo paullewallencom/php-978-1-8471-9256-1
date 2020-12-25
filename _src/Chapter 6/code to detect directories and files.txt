@@ -1,0 +1,18 @@
+<?
+$DI = new DirectoryIterator("c:/spket");
+$directories = array();
+$files = array();
+foreach ($DI as $file) {
+$filename = $file->getFilename();
+if ($file->isDir()){
+if(strpos($filename,".")===false)
+$directories[] = $filename;
+}
+else
+$files[] = $filename;
+}
+echo "Directories\n";
+print_r($directories);
+echo "\nFiles\n";
+print_r($files);
+?>

@@ -1,0 +1,15 @@
+<?php
+$dsn = 'mysql:dbname=test;host=localhost;';
+$user = 'user';
+$password = 'password';
+try {
+$pdo = new PDO($dsn, $user, $password);
+}
+catch (PDOException $e)
+{
+echo 'Connection failed: ' . $e->getMessage();
+}
+$result = $pdo->query("select * from users");
+foreach ($result as $row)
+echo $row['name'];
+?>

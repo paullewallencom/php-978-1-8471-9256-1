@@ -1,0 +1,15 @@
+<?
+//class.student.php
+class Student
+{
+private $properties = array();
+function __get($property)
+{
+return $this->properties[$property];
+}
+function __set($property, $value)
+{
+$this->properties[$property]="AutoSet {$property} as: ".$value;
+}
+}
+?>

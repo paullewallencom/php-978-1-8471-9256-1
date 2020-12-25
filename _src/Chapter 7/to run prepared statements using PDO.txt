@@ -1,0 +1,18 @@
+<?php
+$dsn = 'mysql:dbname=test;host=localhost;';
+$user = 'username';
+$password = 'password';
+try {
+$pdo = new PDO($dsn, $user, $password);
+} catch (PDOException $e)
+{
+echo 'Connection failed: ' . $e->getMessage();
+}
+$stmt = $pdo->prepare("select id from users where name=:name");
+$name = "tipu";
+$stmt->bindParam(":name",$name, PDO::PARAM_STR);
+$stmt->execute();
+$stmt->bindColumn("id",$id);
+$stmt->fetch();
+echo $id;
+?>

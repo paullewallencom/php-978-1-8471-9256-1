@@ -1,0 +1,58 @@
+<?
+session_start();
+class blog extends controller
+{
+public function display()
+{
+$user = $_SESSION['userid'];
+$posts = $this->model->post->find(array("user_id"=>$user),10);
+if(!$posts)
+{
+$this->redirect("blog","write");
+}
+else
+{
+foreach ($posts as &$post)
+{
+$post['comments']=$this->model->comment->find
+(array("post_id"=>$post['id']));
+}
+$this->view->set("posts",$posts);
+}
+}
+public function post()
+{
+$postid= $this->params['0'];
+if (count($_POST)>1)
+{
+$comment = $this->model->comment;
+$comment->date = time();
+$comment->post_id = $postid;
+$comment->insert();
+}
+$post = $this->model->post->find(array("id"=>$postid));
+if (!empty($postid))
+{
+$post[0]['comments'] = $this->model->comment->find
+(array("post_id"=>$postid),100);
+}
+$this->view->set("message","");
+$this->view->set("post",$post[0]);
+//die($postid);
+}
+public function write()
+{
+$this->view->set("color","green");
+if (!empty($_POST))
+{
+$post = $this->model->post;
+$post->user_id=$_SESSION['userid'];
+$post->date = time();
+$post->insert();
+$this->view->set("color","green");
+$this->view->set("message","Successfully saved
+your blog post");
+}
+}
+}
+?>

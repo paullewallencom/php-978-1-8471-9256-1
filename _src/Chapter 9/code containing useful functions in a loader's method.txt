@@ -1,0 +1,24 @@
+<?
+class base{
+public static function pr($array)
+{
+echo "<pre>";
+print_r($array);
+echo "</pre>";
+}
+public static function backtrace()
+{
+echo "<pre>";
+debug_print_backtrace();
+echo "</pre>";
+}
+public static function basePath()
+{
+return getcwd();
+}
+public static function baseUrl()
+{
+$conf = loader::load("config");
+return $conf->base_url;
+}
+?>

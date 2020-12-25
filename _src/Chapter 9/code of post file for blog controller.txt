@@ -1,0 +1,26 @@
+<?
+echo "<div id='post{$post['id']}' >";
+echo "<b><a href='{$base_url}/blog/post/{$post['id']}'>
+{$post['title']}</a></b><br/>";
+echo "<p>".nl2br($post['content'])."</p>";
+echo "Number of comments: ".(count($post['comments']));
+echo "</div>";
+foreach ($post['comments'] as $comment)
+{
+echo "<div style='padding:10px;margin-top:10px;
+border:1px solid #cfcfcf;'>";
+$time = date("Y-m-d",$comment['date']);
+echo "Posted by {$comment['author']} at {$time}:<br/>";
+echo "{$comment['content']}";
+echo "</div>";
+}
+?>
+<h 2>Post a new comment</h2>
+<font color="red"><?=$message;?></font><br/>
+<form method="POST">
+Name:<br/>
+<input type="text" name="author"/><br/>
+Comment: <br/>
+<textarea rows="5" cols="60" name="content" ></textarea><br/>
+<input type="submit" />
+</form>

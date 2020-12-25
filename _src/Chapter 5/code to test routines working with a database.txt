@@ -1,0 +1,34 @@
+<?
+class DB
+{
+private $connection;
+public function __construct()
+{
+$this->connection = mysql_connect("localhost","root","root1234");
+mysql_select_db("test",$this->connection);
+}
+public function insertData($data)
+{
+$fields = join(array_keys($data),",");
+$values = "'".join(array_values($data),",")."'";
+$query = "INSERT INTO users({$fields}) values({$values})";
+return mysql_query($query, $this->connection);
+}
+public function deleteData($id)
+{
+$query = "delete from users where id={$id}";
+return mysql_query($query, $this->connection);
+}
+public function updateData($id, $data)
+{
+$queryparts = array();
+foreach ($data as $key=>$value)
+{
+$queryparts[] = "{$key} = '{$value}'";
+}
+$query = "UPDATE users SET ".join($queryparts,",")."
+WHERE id='{$id}'";
+return mysql_query($query, $this->connection);
+}
+}
+?>

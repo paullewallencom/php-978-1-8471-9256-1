@@ -1,0 +1,12 @@
+<h1>Please register your account</h1><br/>
+<form method="POST">
+Your username: <br/>
+<input type="text" name="name" /><br/>
+Password: <br/>
+<input type="password" name="password" /><br/>
+Fullname: <br/>
+<input type="text" name="fullname" /><br/>
+Email: <br/>
+<input type="text" name="email" /><br/>
+<input type="submit" name="submit" value="Register"/>
+</form>

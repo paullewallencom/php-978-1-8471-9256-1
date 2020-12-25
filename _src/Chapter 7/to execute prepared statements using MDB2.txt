@@ -1,0 +1,26 @@
+<?php
+set_include_path(get_include_path().";".
+"C:/Program Files/PHP/pear;");
+require_once 'MDB2.php';
+$dsn = 'mysql://user:password@localhost/test';
+$options = array('persistent' => true
+);
+$mdb2 = MDB2::factory($dsn, $options);
+if (PEAR::isError($mdb2)) {
+die($mdb2->getMessage());
+}
+$stmt = $mdb2->Prepare("insert into users(name)
+values(?)",array("text"),MDB2_PREPARE_MANIP);
+//for DML statements, we should use MDB2_PREPARE_MANIP and For
+//Reading we should use MDB2_PREPARE_RESULT
+echo $stmt->execute("Mohiuddin");
+$stmt = $mdb2->Prepare("select name from users where
+id=?",array("integer"),array("text"));
+$result = $stmt->execute(11);
+if (PEAR::isError($result))
+echo $result->getMessage();
+while ($row = $result->fetchRow())
+{
+echo $row[0];
+}
+?>

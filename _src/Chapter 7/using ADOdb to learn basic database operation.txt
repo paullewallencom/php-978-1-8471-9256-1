@@ -1,0 +1,14 @@
+<?
+include("adodb/adodb.inc.php");
+$dsn = 'mysql://username:password@localhost/test?persist';
+$conn = ADONewConnection($dsn);
+$conn->setFetchMode(ADODB_FETCH_ASSOC);
+$recordSet = $conn->Execute('select * from users');
+if (!$recordSet)
+print $conn->ErrorMsg(); //if any error is there
+else
+while (!$recordSet->EOF) {
+echo $recordSet->fields['name'].'<BR>';
+$recordSet->MoveNext();
+}
+?>

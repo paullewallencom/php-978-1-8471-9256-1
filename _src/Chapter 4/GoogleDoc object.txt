@@ -1,0 +1,27 @@
+<?
+class GoogleDocs
+{
+public function authenticateByClientLogin()
+{
+//authenticate using Writely authentication scheme
+}
+public function setUser()
+{
+//set user
+}
+public function setPassword()
+{
+//set password
+}
+public function getAllDocuments()
+{
+//get documents available in a folder
+}
+public function getRecentDocuments()
+{
+}
+public function getDocument()
+{
+}
+}
+?>

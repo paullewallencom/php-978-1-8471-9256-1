@@ -1,0 +1,19 @@
+<?
+class Facade
+{
+public function findApartments($place, $divid)
+{
+$AF = new ApartmentFinder();
+$GL =new GeoLocator();
+$GM = new GoogleMap();
+$apartments = $AF->locateApartments($place);
+foreach ($apartments as $apartment)
+{
+$locations[] = $GL->getLocations($apartment);
+}
+$GM->initialize();
+$GM->drawLocations($locations);
+$GM->dispatch($divid);
+}
+}
+?>

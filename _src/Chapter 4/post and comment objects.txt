@@ -1,0 +1,37 @@
+<?
+class Post
+{
+private $title;
+private $content;
+//additional properties
+public function filter()
+{
+//do necessary processing
+$this->content = $filtered_content;
+$this->title = $filtered_title;
+}
+public function getContent()
+{
+return $this->content;
+}
+//additional methods
+}
+?>
+<?
+class Comment
+{
+private $date;
+private $content;
+//additional properties
+public function filter()
+{
+//do necessary processing
+$this->content = $filtered_content;
+}
+public function getContent()
+{
+return $this->content;
+}
+//additional methods
+}
+?>

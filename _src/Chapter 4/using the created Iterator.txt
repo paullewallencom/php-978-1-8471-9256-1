@@ -1,0 +1,18 @@
+<?
+$blogposts = getAllPosts();
+$posts = new Posts($posts);
+foreach ($posts as $post)
+{
+echo $post->getTitle();
+echo $post->getAuthor();
+echo $post->getDate();
+echo $post->getContent();
+$comments = new Comments($post->getComments());
+//another Iterator for comments, code is same as Posts
+foreach ($comments as $comment)
+{
+echo $comment->getAuthor();
+echo $comment->getContent();
+}
+}
+?>

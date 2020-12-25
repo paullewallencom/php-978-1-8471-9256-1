@@ -1,0 +1,12 @@
+<?
+//class.db.php
+class db
+{
+function connect()
+{
+pg_connect("somehost","username","password");
+}
+}
+$db = new db();
+$db->connect();
+?>

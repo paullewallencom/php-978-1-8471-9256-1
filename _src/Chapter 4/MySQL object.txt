@@ -1,0 +1,25 @@
+<?
+class MySQLManager
+{
+public function setHost($host)
+{
+//set db host
+}
+public function setDB($db)
+{
+//set db name
+}
+public function setUserName($user)
+{
+//set user name
+}
+public function setPassword($pwd)
+{
+//set password
+}
+public function connect()
+{
+//now connect
+}
+}s
+?>

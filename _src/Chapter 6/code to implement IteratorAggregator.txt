@@ -1,0 +1,29 @@
+<?php
+class MyArray implements IteratorAggregate
+{
+private $arr;
+public function __construct()
+{
+$this->arr = array();
+}
+public function add( $key, $value )
+{
+if( $this->check( $key, $value ) )
+{
+$this->arr[$key] = $value;
+}
+}
+private function check( $key, $value )
+{
+if( $key == $value )
+{
+return false;
+}
+return true;
+}
+public function getIterator()
+{
+return new ArrayIterator( $this->arr );
+}
+}
+?>

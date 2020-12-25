@@ -1,0 +1,17 @@
+<?
+include("interface.dbdriver.php");
+include("abstract.reportgenerator.php");
+class MySQLDriver extends ReportGenerator implements DBDriver
+{
+public function connect()
+{
+//connect to database
+}
+public function execute($query)
+{
+//execute the query and output result
+}
+// You need not declare or write the generateReport method here
+//again as it is extended from the abstract class directly."
+}
+?>

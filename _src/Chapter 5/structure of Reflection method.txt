@@ -1,0 +1,34 @@
+<?php
+class ReflectionMethod extends ReflectionFunction
+{
+public __construct(mixed class, string name)
+public string __toString()
+public static string export(mixed class, string name, bool return)
+public mixed invoke(stdclass object, mixed args)
+public mixed invokeArgs(stdclass object, array args)
+public bool isFinal()
+public bool isAbstract()
+public bool isPublic()
+public bool isPrivate()
+public bool isProtected()
+public bool isStatic()
+public bool isConstructor()
+public bool isDestructor()
+public int getModifiers()
+public ReflectionClass getDeclaringClass()
+// Inherited from ReflectionFunction
+final private __clone()
+public string getName()
+public bool isInternal()
+public bool isUserDefined()
+public string getFileName()
+public int getStartLine()
+public int getEndLine()
+public string getDocComment()
+public array getStaticVariables()
+public bool returnsReference()
+public ReflectionParameter[] getParameters()
+public int getNumberOfParameters()
+public int getNumberOfRequiredParameters()
+}
+?>

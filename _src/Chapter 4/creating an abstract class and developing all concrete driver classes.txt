@@ -1,0 +1,25 @@
+< ?
+abstract class DBDriver
+{
+public function connect();
+public function executeQuery();
+public function insert_id();
+public function setHost($host)
+{
+//set db host
+}
+public function setDB($db)
+{
+//set db name
+}
+public function setUserName($user)
+{
+//set user name
+}
+public function setPassword($pwd)
+{
+//set password
+}
+//.....
+}
+?>

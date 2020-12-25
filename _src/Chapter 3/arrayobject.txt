@@ -1,0 +1,12 @@
+<?
+$users = new ArrayObject(array("hasin"=>"hasin@pageflakes.com",
+"afif"=>"mayflower@phpxperts.net",
+"ayesha"=>"florence@pageflakes.net"));
+$iterator = $users->getIterator();
+while ($iterator->valid())
+{
+echo "{$iterator->key()}'s Email address is
+{$iterator->current()}\n";
+$iterator->next();
+}
+?>

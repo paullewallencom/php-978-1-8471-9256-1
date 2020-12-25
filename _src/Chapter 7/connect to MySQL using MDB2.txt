@@ -1,0 +1,19 @@
+<?php
+set_include_path(get_include_path().";".
+"C:/Program Files/PHP/pear;");
+require_once 'MDB2.php';
+$dsn = 'mysql://user:password@localhost/test';
+$options = array('persistent' => true
+);
+$mdb2 = MDB2::factory($dsn, $options);
+if (PEAR::isError($mdb2)) {
+die($mdb2->getMessage());
+}
+// ...
+$result = $mdb2->query("select * from users");
+while ($row = $result->fetchRow(MDB2_FETCHMODE_ASSOC))
+{
+echo $row['name']."\n";
+}
+$mdb2->disconnect();
+?>

@@ -1,0 +1,14 @@
+<?
+$configs['use_layout']=false;
+$configs['unit_test_enabled']=true;
+$configs['default_controller']="welcome";
+$configs['global_profile']=true;
+/* DB */
+$configs['db']['usedb']="mysql";
+$configs['db']['development']['dbname']="packtblog";
+$configs['db']['development']['dbhost']="localhost";
+$configs['db']['development']['dbuser']="root";
+$configs['db']['development']['dbpwd']="root1234";
+$configs['db']['development']['persistent']=true;
+$configs['db']['development']['dbtype']="mysql";
+?>
